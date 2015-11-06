@@ -28,15 +28,15 @@ exports.hook_queue = function (next, connection) {
 
 	if (transaction.rcpt_to.length > 0 && userMap.hasOwnProperty(transaction.rcpt_to[0].user) && transaction.rcpt_to[0].user != transaction.mail_from.original) {
 		var mailObj = userMap[transaction.rcpt_to[0].user];
-		
+
 		if (!mailObj.hasOwnProperty('from'))
 			mailObj.from = transaction.rcpt_to[0].original;
-		
+
 		mailObj.to = transaction.mail_from.original;
 		var messageIds = connection.transaction.header.get_all('Message-Id');
 		if (messageIds.length > 0)
 			mailObj.inReplyTo = messageIds[0];
-		
+
 		var mail = mailcomposer(mailObj);
 
 		var outnext = (code, msg) => {
@@ -50,7 +50,7 @@ exports.hook_queue = function (next, connection) {
                     next();
 			}
 		};
-		
+
 		mail.build((err, message) => {
 			if (!err) {
 				this.loginfo(mailObj);
