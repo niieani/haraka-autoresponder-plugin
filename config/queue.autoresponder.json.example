@@ -4,7 +4,6 @@
 		"text": "Very sorry!"
 	},
 	"username": {
-		"from": "Website <noreply@localhost>",
 		"subject": "We don't recieve emails here.",
 		"text": "Very sorry!"
 	}
