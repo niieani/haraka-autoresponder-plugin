@@ -3,6 +3,7 @@
   "description": "An autoresponder for Haraka",
   "version": "0.0.1",
   "dependencies": {
+    "fifo-array": "^0.1.2",
     "mailcomposer": "^2.1.0"
   }
 }
